@@ -1,22 +1,22 @@
 # for office PC only run the /libpaths code, otherwise comment it out
 .libPaths("c:/software/Rpackages")
-# devtools::install_github("danwkenn\BELSpatial") # installing the package
+devtools::install_github("danwkenn/BELSpatial") # installing the package
 
 # loading the data (Scottish Lip Cancer Data)
 
 # libraries
-library(rgdal)          # For readOGR()
-library(rgeos)          # For unionSpatialPolygons(), gIntersection(), gBuffer()
-library(maptools)       # For unionSpatialPolygons()
-library(ggplot2)        # For fortify(), ggplot()
-library(readxl)         # For read_excel()
-library(magrittr)       # For the pipe operator %>%
-library(scales)         # For rescale()
-library(dplyr)          # For inner_join(), bind_rows(),                   ### between(), mutate()
-library(gridExtra)      # For grid.arrange()
-library(tidyr)          # For gather()
-library(spdep) # for reading .gal files)
-library(MRH) #
+require(rgdal)          # For readOGR()
+require(rgeos)          # For unionSpatialPolygons(), gIntersection(), gBuffer()
+require(maptools)       # For unionSpatialPolygons()
+require(ggplot2)        # For fortify(), ggplot()
+require(readxl)         # For read_excel()
+require(magrittr)       # For the pipe operator %>%
+require(scales)         # For rescale()
+require(dplyr)          # For inner_join(), bind_rows(),### between(), mutate()
+require(gridExtra)      # For grid.arrange()
+require(tidyr)          # For gather()
+require(spdep) # for reading .gal files)
+require(MRH) #
 
 map <- readOGR("Data/scotlip/scotlip.shp", verbose = FALSE)
 
@@ -62,7 +62,7 @@ data1$CANCER[data1$CANCER==0]<- 0.1
 data1$SIR<- data1$CANCER/data1$CEXP
 
 # fitting BEl spatial model utilising the scaled/standardised covariate
-x<- cbind(1, (data1$AFF-mean(data1$Aff))/sd(data1$AFF))
+x<- cbind(1, scale(data1$AFF))
 
 # using log(rawSIRs) as the response
 y= log(data1$SIR)
