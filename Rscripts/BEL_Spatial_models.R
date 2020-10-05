@@ -1,10 +1,11 @@
 # for office PC only run the /libpaths code, otherwise comment it out
-.libPaths("c:/software/Rpackages")
-devtools::install_github("danwkenn/BELSpatial") # installing the package
+# .libPaths("c:/software/Rpackages")
+# devtools::install_github("danwkenn/BELSpatial") # installing the package
 
 # loading the data (Scottish Lip Cancer Data)
 
 # libraries
+require(BELSpatial)
 require(rgdal)          # For readOGR()
 require(rgeos)          # For unionSpatialPolygons(), gIntersection(), gBuffer()
 require(maptools)       # For unionSpatialPolygons()
