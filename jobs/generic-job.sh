@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-#PBS -N runno-hmm-overfitting
-#PBS -l ncpus=1
-#PBS -l mem=2GB
+#PBS -N BEL-Spatial
+#PBS -l ncpus=3
+#PBS -l mem=10GB
 #PBS -l walltime=00:30:00
 #PBS -l cpuarch=avx2
-#PBS -o output-files/hmm-overfitting_runno_stdout.out
-#PBS -e output-files/hmm-overfitting_runno_stderr.out
+#PBS -o BEL-Spatial_stdout.out
+#PBS -e BEL-Spatial_stderr.out
 
 # More info on PBS directives can be found here
 # http://qcd.phys.cmu.edu/QCDcluster/pbs/run_serial.html
@@ -76,7 +76,7 @@ run_program(){
   #make sure we change to the current directory
   #where this bash job script is
   cd $PBS_O_WORKDIR
-  Rscript r-source-code.R runno
+  Rscript "Rscripts/BEL_Spatial_models.R" 
   #this script installed all of the packages locally,
   #since you do not have root access to HPC.
   #This just means we need to let R now where we installed
