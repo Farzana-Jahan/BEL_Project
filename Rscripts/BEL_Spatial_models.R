@@ -34,8 +34,8 @@ data1 <- read_excel("Data/scotlip/scotlip.xlsx") %>%
 #rownames(W)<-c()
 #ind <- upper.tri(W)
 #W[ind] <- t(W)[ind] 
-#save(W,file="Data/scotlip/W.RData")
-load("Data/scotlip/W.RData")
+#saveRDS(W,"Data/scotlip/W.RDS")
+W<-readRDS("Data/scotlip/W.RDS")
 
 ni<-rowSums(W) # no. of neighbours for each area
 R<-diag(ni)
