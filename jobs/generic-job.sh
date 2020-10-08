@@ -47,7 +47,7 @@ load_modules(){
   #activate module environment
   #NOTE: a recent HPC update means that you shouldn't need
   #to do this anymore, but I have included as a sanity check
-  #source /etc/profile.d/modules.sh
+  source /etc/profile.d/modules.sh
   
   #load R
   module load atg/R/3.4.1-foss-2016a
