@@ -104,14 +104,14 @@ clusterEvalQ(cl=cluster,.libPaths("c:/software/Rpackages"))
 clusterEvalQ(cl=cluster,library(BELSpatial))
 clusterExport(cl=cluster,varlist = c("y","x","n","p","var","beta_init", "psi_init", "tau_init"
                                      ,"R", "wi"))
-BEL_BYM_scotlip<-clusterApply(cl=cluster, x=1:3, function(z){BEL_leroux_new(y,x,n,p,var,rho=1,niter=5000000,
+BEL_BYM_scotlip<-clusterApply(cl=cluster, x=1:3, function(z){BEL_leroux_new(y,x,n,p,var,rho=1,niter=500,
                                                           beta_init, psi_init, tau_init,R, wi, sd_psi=0.35, 
                                                            sd_beta=1, sd_tau=0.4)})
 save(BEL_BYM_scotlip,file="Results/BEL_BYM_scotlip.RData")
 
 # fitting BEL BYM model taking rho= 0.75
 
-BEL_leroux_scotlip<-clusterApply(cl=cluster, x=1:3, function(z){BEL_leroux_new(y,x,n,p,var,rho=0.75,niter=5000000,
+BEL_leroux_scotlip<-clusterApply(cl=cluster, x=1:3, function(z){BEL_leroux_new(y,x,n,p,var,rho=0.75,niter=500,
                                                                             beta_init, psi_init, tau_init,R, wi, sd_psi=0.35, 
                                                                             sd_beta=1, sd_tau=0.4)})
 save(BEL_leroux_scotlip,file="Results/BEL_Leroux_scotlip.RData")
@@ -137,7 +137,7 @@ wi<-wi_mu
 
 clusterExport(cl=cluster,varlist = c("y","x","n","p","var","beta_init", "psi_init", "tau_init"
                                      ,"B","B_plus","q","M","MBM", "wi"))
-Porter_BSHEL_scotlip<-clusterApply(cl=cluster, x=1:3, fun= function(z){BSHEL(y,x,n,p,q,var,niter=5000000,beta_init, 
+Porter_BSHEL_scotlip<-clusterApply(cl=cluster, x=1:3, fun= function(z){BSHEL(y,x,n,p,q,var,niter=500,beta_init, 
                                                                      psi_init, tau_init,M,MBM, wi, 
                                                                      sd_psi=0.00001, 
                                                                      sd_beta=0.0001, sd_tau=0.9)})

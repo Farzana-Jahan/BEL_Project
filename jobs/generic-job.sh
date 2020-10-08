@@ -2,7 +2,7 @@
 
 #PBS -N BEL-Spatial
 #PBS -l ncpus=3
-#PBS -l mem=10GB
+#PBS -l mem= 5GB
 #PBS -l walltime=00:30:00
 #PBS -l cpuarch=avx2
 #PBS -o BEL-Spatial_stdout.out
