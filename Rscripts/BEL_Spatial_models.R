@@ -9,9 +9,6 @@ require(BELSpatial)
 require(gmm)
 require(emplik)
 require(MASS)
-require(rgdal)          # For readOGR()
-require(rgeos)          # For unionSpatialPolygons(), gIntersection(), gBuffer()
-require(maptools)       # For unionSpatialPolygons()
 require(ggplot2)        # For fortify(), ggplot()
 require(readxl)         # For read_excel()
 require(magrittr)       # For the pipe operator %>%
@@ -19,28 +16,10 @@ require(scales)         # For rescale()
 require(dplyr)          # For inner_join(), bind_rows(),### between(), mutate()
 require(gridExtra)      # For grid.arrange()
 require(tidyr)          # For gather()
-require(spdep) # for reading .gal files)
-require(MRH) #
 
-map <- readOGR("Data/scotlip/scotlip.shp", verbose = FALSE)
 
-# Create border map from full map
-N <- length(map)
-map.border <- unionSpatialPolygons(map, IDs = rep(1, N))
-map.border <- fortify(map.border)
 
-# Fortify
-map.df <- fortify(map)
-
-# Make shapefile dataframe IDs numeric
-map.df$id <- as.numeric(map.df$id)
-if(!all(range(map.df$id) == c(1, N))){
-  map.df$id <- as.numeric(map.df$id) + 1  # Need to add 1 so range is 1:N
-  print(range(map.df$id))
-}
-stopifnot(all(unique(map.df$id) == 1:N))
-
-# reading data
+# reading excel data
 data1 <- read_excel("Data/scotlip/scotlip.xlsx") %>% 
   data.frame %>%
   subset(select = -c(1:4, 6:7, 9))
