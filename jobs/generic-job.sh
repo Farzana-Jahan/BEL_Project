@@ -20,9 +20,9 @@
 ###############################################
 print_pbs_info(){
   echo ------------------------------------------------------
-    echo -n 'Job is running on node '; cat $PBS_NODEFILE
+  echo -n 'Job is running on node '; cat $PBS_NODEFILE
   echo ------------------------------------------------------
-    echo PBS: qsub is running on $PBS_O_HOST
+  echo PBS: qsub is running on $PBS_O_HOST
   echo PBS: originating queue is $PBS_O_QUEUE
   echo PBS: executing queue is $PBS_QUEUE
   echo PBS: working directory is $PBS_O_WORKDIR
@@ -47,7 +47,7 @@ load_modules(){
   #activate module environment
   #NOTE: a recent HPC update means that you shouldn't need
   #to do this anymore, but I have included as a sanity check
-  source /etc/profile.d/modules.sh
+  #source /etc/profile.d/modules.sh
   
   #load R
   module load atg/R/3.4.1-foss-2016a
