@@ -34,7 +34,7 @@ data1 <- read_excel("Data/scotlip/scotlip.xlsx") %>%
 #rownames(W)<-c()
 #ind <- upper.tri(W)
 #W[ind] <- t(W)[ind] 
-#saveRDS(W,"Data/scotlip/W.RDS",version=2)
+#saveRDS(W,"Data/scotlip/W.RDS")
 W<-readRDS("Data/scotlip/W.RDS")
 
 ni<-rowSums(W) # no. of neighbours for each area
@@ -81,45 +81,18 @@ library(parallel)
 cluster<-makeCluster(3)
 #clusterEvalQ(cl=cluster,.libPaths("c:/software/Rpackages"))
 clusterEvalQ(cl=cluster,library(BELSpatial))
-clusterExport(cl=cluster,varlist = c("y","x","n","p","var","beta_init", "psi_init", "tau_init"
-                                     ,"R", "wi"))
-BEL_BYM_scotlip<-clusterApply(cl=cluster, x=1:3, function(z){BEL_leroux_new(y,x,n,p,var,rho=1,niter=50000,
+clusterExport(cl=cluster,varlist = c("y","x","n","p","var","beta_init", "psi_init", "tau_init","R", "wi"))
+BEL_BYM_scotlip<-clusterApply(cl=cluster, x=1:3, function(z){BEL_leroux_new(y,x,n,p,var,rho=1,niter=1000000,
                                                           beta_init, psi_init, tau_init,R, wi, sd_psi=0.35, 
                                                            sd_beta=1, sd_tau=0.4)})
 save(BEL_BYM_scotlip,file="Results/BEL_BYM_scotlip.RData")
 
 # fitting BEL BYM model taking rho= 0.75
 
-BEL_leroux_scotlip<-clusterApply(cl=cluster, x=1:3, function(z){BEL_leroux_new(y,x,n,p,var,rho=0.75,niter=50000,
+BEL_leroux_scotlip<-clusterApply(cl=cluster, x=1:3, function(z){BEL_leroux_new(y,x,n,p,var,rho=0.75,niter=1000000,
                                                                             beta_init, psi_init, tau_init,R, wi, sd_psi=0.35, 
                                                                             sd_beta=1, sd_tau=0.4)})
 save(BEL_leroux_scotlip,file="Results/BEL_Leroux_scotlip.RData")
 
-# Porter's BSHEL model
-B<-W
-B_plus<-diag(rowSums(B))
-M=M_create(y,x,B)
-MBM=MBM_create(M,B,B_plus)
-q=dim(MBM)[2]
-psi_init <- rep(0,q) 
-wi=wi_init
-var<- as.numeric(var(y- x%*%beta_init))
-beta_mele<- mele( x = x, tet= beta_init,y=y,var=var) 
-mu_init<- x%*% beta_mele + M%*%psi_init
-beta_init<-beta_mele
 
-wi_mu<- el.test(y-mu_init,0)$wts # computing el weights using emplik package
-wi_mu<-wi_mu/sum(wi_mu) # sum(wi) = 1 and wi>0 constraints 
-wi<-wi_mu
-
-#Fitting the Porter BSHEL model
-
-clusterExport(cl=cluster,varlist = c("y","x","n","p","var","beta_init", "psi_init", "tau_init"
-                                     ,"B","B_plus","q","M","MBM", "wi"))
-Porter_BSHEL_scotlip<-clusterApply(cl=cluster, x=1:3, fun= function(z){BSHEL(y,x,n,p,q,var,niter=50000,beta_init, 
-                                                                     psi_init, tau_init,M,MBM, wi, 
-                                                                     sd_psi=0.00001, 
-                                                                     sd_beta=0.0001, sd_tau=0.9)})
-
-save(Porter_BSHEL_scotlip,file="Results/BSHEL_porter_scotlip.RData")
 stopCluster(cl=cluster)
