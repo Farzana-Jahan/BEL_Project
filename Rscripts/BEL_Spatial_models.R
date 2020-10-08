@@ -34,7 +34,7 @@ data1 <- read_excel("Data/scotlip/scotlip.xlsx") %>%
 #rownames(W)<-c()
 #ind <- upper.tri(W)
 #W[ind] <- t(W)[ind] 
-#saveRDS(W,"Data/scotlip/W.RDS")
+#saveRDS(W,"Data/scotlip/W.RDS",version=2)
 W<-readRDS("Data/scotlip/W.RDS")
 
 ni<-rowSums(W) # no. of neighbours for each area
@@ -79,7 +79,7 @@ wi<-wi_mu
 # fitting BEL BYM model taking rho= 1
 library(parallel)
 cluster<-makeCluster(3)
-clusterEvalQ(cl=cluster,.libPaths("c:/software/Rpackages"))
+#clusterEvalQ(cl=cluster,.libPaths("c:/software/Rpackages"))
 clusterEvalQ(cl=cluster,library(BELSpatial))
 clusterExport(cl=cluster,varlist = c("y","x","n","p","var","beta_init", "psi_init", "tau_init"
                                      ,"R", "wi"))
