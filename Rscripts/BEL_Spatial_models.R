@@ -45,16 +45,19 @@ data1 <- read_excel("Data/scotlip/scotlip.xlsx") %>%
   data.frame %>%
   subset(select = -c(1:4, 6:7, 9))
 
-# creating neighbourhood matrix
+# reading neighbourhood matrix from text file
 
-scot_nb<-read.gal("Data/scotlip/scotlip.gal", override.id = TRUE)
+#scot_nb<-read.gal("Data/scotlip/scotlip.gal", override.id = TRUE)
 #class(scot_nb)
-W<-nb2mat(scot_nb,style="B")
-nblist<-nb2listw(scot_nb)
+#W<-nb2mat(scot_nb,style="B")
+#nblist<-nb2listw(scot_nb)
 #creating symmetric neighbourhood matrix for BYM in CARBAYES
-rownames(W)<-c()
-ind <- upper.tri(W)
-W[ind] <- t(W)[ind] 
+#rownames(W)<-c()
+#ind <- upper.tri(W)
+#W[ind] <- t(W)[ind] 
+#save(W,file="Data/scotlip/W.RDS")
+load("Data/scotlip/W.RDS")
+
 ni<-rowSums(W) # no. of neighbours for each area
 R<-diag(ni)
 for(i in 1:nrow(R))
