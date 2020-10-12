@@ -117,8 +117,8 @@ clusterExport(cl=cluster,varlist = c("y","x","n","p","var","beta_init", "psi_ini
                                      ,"B","B_plus","q","M","MBM", "wi"))
 Porter_BSHEL_scotlip<-clusterApply(cl=cluster, x=1:3, fun= function(z){BSHEL(y,x,n,p,q,var,niter=1000000,beta_init, 
                                                                              psi_init, tau_init,M,MBM, wi, 
-                                                                             sd_psi=0.00001, 
-                                                                             sd_beta=0.0001, sd_tau=0.9)})
+                                                                             sd_psi=0.09, 
+                                                                             sd_beta=0.5, sd_tau=0.9)})
 
 save(Porter_BSHEL_scotlip,file="Results/BSHEL_porter_scotlip.RData")
 stopCluster(cl=cluster)
