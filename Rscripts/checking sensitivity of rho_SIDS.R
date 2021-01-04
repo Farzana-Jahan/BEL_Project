@@ -34,7 +34,7 @@ for(i in 1:nrow(R))
 }
 
 # fitting BEl spatial model utilising the scaled/standardised covariate
-X<- cbind(1, scale(data_1$x))
+x<- cbind(1, scale(data_1$x))
 
 # using log(rawraws) as the response
 data_1$raw[data_1$raw==0]<-0.1
