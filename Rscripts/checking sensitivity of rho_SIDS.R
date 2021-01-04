@@ -73,7 +73,7 @@ BEL_leroux_SIDS<-BEL_leroux_new(y,x,n,p,var,rho=0.1,niter=10000,
                                   sd_beta=1, sd_tau=0.4)
 Beta_leroux_BEL<- rbind(BEL_leroux_SIDS$Beta[1,],BEL_leroux_SIDS$Beta[1,])
 psi_leroux_BEL<-matrix(c(BEL_leroux_SIDS$psi[,1]),nrow=10000, ncol=1)
-for(i in 2:56){
+for(i in 2:100){
   psi_leroux_BEL<-cbind(psi_leroux_BEL,BEL_leroux_SIDS$psi[,i])
 }
 tau_leroux_BEL<-BEL_leroux_SIDS$tau
@@ -84,7 +84,7 @@ BEL_leroux_SIDS<-BEL_leroux_new(y,x,n,p,var,rho=0.2,niter=10000,
                                    sd_beta=1, sd_tau=0.4)
 Beta_leroux_BEL<- rbind(BEL_leroux_SIDS$Beta[1,],BEL_leroux_SIDS$Beta[1,])
 psi_leroux_BEL<-matrix(c(BEL_leroux_SIDS$psi[,1]),nrow=10000, ncol=1)
-for(i in 2:56){
+for(i in 2:100){
   psi_leroux_BEL<-cbind(psi_leroux_BEL,BEL_leroux_SIDS$psi[,i])
 }
 tau_leroux_BEL<-BEL_leroux_SIDS$tau
@@ -95,7 +95,7 @@ BEL_leroux_SIDS<-BEL_leroux_new(y,x,n,p,var,rho=0.3,niter=10000,
                                    sd_beta=1, sd_tau=0.4)
 Beta_leroux_BEL<- rbind(BEL_leroux_SIDS$Beta[1,],BEL_leroux_SIDS$Beta[1,])
 psi_leroux_BEL<-matrix(c(BEL_leroux_SIDS$psi[,1]),nrow=10000, ncol=1)
-for(i in 2:56){
+for(i in 2:100){
   psi_leroux_BEL<-cbind(psi_leroux_BEL,BEL_leroux_SIDS$psi[,i])
 }
 tau_leroux_BEL<-BEL_leroux_SIDS$tau
@@ -106,7 +106,7 @@ BEL_leroux_SIDS<-BEL_leroux_new(y,x,n,p,var,rho=0.4,niter=10000,
                                    sd_beta=1, sd_tau=0.4)
 Beta_leroux_BEL<- rbind(BEL_leroux_SIDS$Beta[1,],BEL_leroux_SIDS$Beta[1,])
 psi_leroux_BEL<-matrix(c(BEL_leroux_SIDS$psi[,1]),nrow=10000, ncol=1)
-for(i in 2:56){
+for(i in 2:100){
   psi_leroux_BEL<-cbind(psi_leroux_BEL,BEL_leroux_SIDS$psi[,i])
 }
 tau_leroux_BEL<-BEL_leroux_SIDS$tau
@@ -117,7 +117,7 @@ BEL_leroux_SIDS<-BEL_leroux_new(y,x,n,p,var,rho=0.5,niter=10000,
                                    sd_beta=1, sd_tau=0.4)
 Beta_leroux_BEL<- rbind(BEL_leroux_SIDS$Beta[1,],BEL_leroux_SIDS$Beta[1,])
 psi_leroux_BEL<-matrix(c(BEL_leroux_SIDS$psi[,1]),nrow=10000, ncol=1)
-for(i in 2:56){
+for(i in 2:100){
   psi_leroux_BEL<-cbind(psi_leroux_BEL,BEL_leroux_SIDS$psi[,i])
 }
 tau_leroux_BEL<-BEL_leroux_SIDS$tau
@@ -128,7 +128,7 @@ BEL_leroux_SIDS<-BEL_leroux_new(y,x,n,p,var,rho=0.6,niter=10000,
                                    sd_beta=1, sd_tau=0.4)
 Beta_leroux_BEL<- rbind(BEL_leroux_SIDS$Beta[1,],BEL_leroux_SIDS$Beta[1,])
 psi_leroux_BEL<-matrix(c(BEL_leroux_SIDS$psi[,1]),nrow=10000, ncol=1)
-for(i in 2:56){
+for(i in 2:100){
   psi_leroux_BEL<-cbind(psi_leroux_BEL,BEL_leroux_SIDS$psi[,i])
 }
 tau_leroux_BEL<-BEL_leroux_SIDS$tau
@@ -139,7 +139,7 @@ BEL_leroux_SIDS<-BEL_leroux_new(y,x,n,p,var,rho=0.7,niter=10000,
                                    sd_beta=1, sd_tau=0.4)
 Beta_leroux_BEL<- rbind(BEL_leroux_SIDS$Beta[1,],BEL_leroux_SIDS$Beta[1,])
 psi_leroux_BEL<-matrix(c(BEL_leroux_SIDS$psi[,1]),nrow=10000, ncol=1)
-for(i in 2:56){
+for(i in 2:100){
   psi_leroux_BEL<-cbind(psi_leroux_BEL,BEL_leroux_SIDS$psi[,i])
 }
 tau_leroux_BEL<-BEL_leroux_SIDS$tau
@@ -150,7 +150,7 @@ BEL_leroux_SIDS<-BEL_leroux_new(y,x,n,p,var,rho=0.8,niter=10000,
                                    sd_beta=1, sd_tau=0.4)
 Beta_leroux_BEL<- rbind(BEL_leroux_SIDS$Beta[1,],BEL_leroux_SIDS$Beta[1,])
 psi_leroux_BEL<-matrix(c(BEL_leroux_SIDS$psi[,1]),nrow=10000, ncol=1)
-for(i in 2:56){
+for(i in 2:100){
   psi_leroux_BEL<-cbind(psi_leroux_BEL,BEL_leroux_SIDS$psi[,i])
 }
 tau_leroux_BEL<-BEL_leroux_SIDS$tau
@@ -161,7 +161,7 @@ BEL_leroux_SIDS<-BEL_leroux_new(y,x,n,p,var,rho=0.9,niter=10000,
                                    sd_beta=1, sd_tau=0.4)
 Beta_leroux_BEL<- rbind(BEL_leroux_SIDS$Beta[1,],BEL_leroux_SIDS$Beta[1,])
 psi_leroux_BEL<-matrix(c(BEL_leroux_SIDS$psi[,1]),nrow=10000, ncol=1)
-for(i in 2:56){
+for(i in 2:100){
   psi_leroux_BEL<-cbind(psi_leroux_BEL,BEL_leroux_SIDS$psi[,i])
 }
 tau_leroux_BEL<-BEL_leroux_SIDS$tau
