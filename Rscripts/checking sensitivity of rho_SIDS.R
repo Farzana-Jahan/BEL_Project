@@ -41,7 +41,7 @@ data_1$raw[data_1$raw==0]<-0.1
 
 
 # using log(rawraws) as the response
-y= log(data1$raw)
+y= log(data_1$raw)
 # initial values needed before fitting models
 
 n<- length(y) # no. of observations
