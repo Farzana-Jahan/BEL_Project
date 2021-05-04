@@ -59,8 +59,8 @@ n<- length(y) # no. of observations
 p<- dim(x)[2] # no. of covariates
 alpha_1<-1 # hyperparamter for tau prior
 alpha_2<-0.01 # hyperparamter for tau prior
-tau_inv_init<- rgamma(1,alpha_1,alpha_2) # using IG prior(1,1) for tau_inv
-tau_init<- 1/tau_inv_init
+tau_init<- rgamma(1,alpha_1,alpha_2)
+tau_inv_init<-1/tau_init
 g<- 10# G prior evaluated at 10 for regression coefficients' prior (Zellner prior)
 prior_mean_beta<- rep(0,p) # p is the number of regression parameters, in case of one covariate, p=2
 beta_init<- rnorm(2,prior_mean_beta, (1/g)*tau_inv_init)
